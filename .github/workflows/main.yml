@@ -12,5 +12,8 @@ jobs:
   display-input:
     runs-on: ubuntu-latest
     steps:
+    - name: Set input message to the environment variable
+      run: echo "MESSAGE=${{ github.event.inputs.custom_message }}" >> $GITHUB_ENV
+
     - name: Display the input message
-      run: echo "You entered: ${{ github.event.inputs.custom_message }}"
+      run: echo "You entered: $MESSAGE"
