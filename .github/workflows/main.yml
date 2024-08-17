@@ -1,0 +1,17 @@
+name: Display Date and Reuse Output
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  display-and-store-date:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Store today’s date
+      id: get_date
+      run: echo "DATE=$(date)" >> $GITHUB_ENV
+
+    - name: Display stored date
+      run: echo "Today’s date is $DATE"
