@@ -1,17 +1,16 @@
-name: Display Date and Reuse Output
+name: Display Input Parameter
 
 on: 
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      custom_message:
+        description: 'Enter a custom message'
+        required: true
+        default: 'Hello, GitHub Actions!'
 
 jobs:
-  display-and-store-date:
+  display-input:
     runs-on: ubuntu-latest
     steps:
-    - name: Store today’s date
-      id: get_date
-      run: echo "DATE=$(date)" >> $GITHUB_ENV
-
-    - name: Display stored date
-      run: echo "Today’s date is $DATE"
+    - name: Display the input message
+      run: echo "You entered: ${{ github.event.inputs.custom_message }}"
