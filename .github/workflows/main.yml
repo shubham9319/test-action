@@ -16,4 +16,4 @@ jobs:
       run: echo "MESSAGE=${{ github.event.inputs.custom_message }}" >> $GITHUB_ENV
 
     - name: Display the input message
-      run: echo "You entered: $MESSAGE"
+      run: echo "You entered $MESSAGE"
